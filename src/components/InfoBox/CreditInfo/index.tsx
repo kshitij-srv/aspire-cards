@@ -1,6 +1,6 @@
 const CreditInfo = () => {
     return (
-        <div>Cards Information</div>
+        <div>Credit Information</div>
     );
 };
 
