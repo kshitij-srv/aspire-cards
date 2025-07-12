@@ -1,4 +1,4 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';
 
 export interface CardType {
     id: number;
@@ -12,39 +12,21 @@ export interface CardType {
 
 interface CardsState {
     cards: CardType[];
+    loading: boolean;
+    error: string | null;
 }
 
 const initialState: CardsState = {
-    cards: [
-        {
-            id: 1,
-            name: "Mark Henry",
-            number: "2736567849872020",
-            expiry: "12/20",
-            cvv: "123",
-            balance: 1000,
-            frozen: false,
-        },
-        {
-            id: 2,
-            name: "Jane Doe",
-            number: "3456756409873344",
-            expiry: "11/23",
-            cvv: "276",
-            balance: 800,
-            frozen: false,
-        },
-        {
-            id: 3,
-            name: "John Smith",
-            number: "8769345608769988",
-            expiry: "05/24",
-            cvv: "658",
-            balance: 1200,
-            frozen: false,
-        },
-    ],
+    cards: [],
+    loading: false,
+    error: null,
 };
+
+export const fetchCards = createAsyncThunk<CardType[]>('cards/fetchCards', async () => {
+    const res = await fetch('/api/cards'); // your MSW or real endpoint
+    if (!res.ok) throw new Error('Failed to fetch cards');
+    return await res.json();
+});
 
 const cardsSlice = createSlice({
     name: 'cards',
@@ -57,6 +39,21 @@ const cardsSlice = createSlice({
         addCard: (state, action: PayloadAction<CardType>) => {
             state.cards.push(action.payload);
         },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchCards.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(fetchCards.fulfilled, (state, action) => {
+                state.loading = false;
+                state.cards = action.payload;
+            })
+            .addCase(fetchCards.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message || 'Failed to fetch cards';
+            });
     },
 });
 

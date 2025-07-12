@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Mark Henry",
+        "number": "2736567849872020",
+        "expiry": "12/25",
+        "cvv": "***",
+        "frozen": false,
+        "balance": 1800
+    },
+    {
+        "id": 2,
+        "name": "Jane Doe",
+        "number": "3456756409873344",
+        "expiry": "11/26",
+        "cvv": "***",
+        "frozen": false,
+        "balance": 1200
+    }
+]

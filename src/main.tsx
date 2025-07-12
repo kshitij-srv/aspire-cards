@@ -4,11 +4,20 @@ import './index.css';
 import App from './App.tsx';
 import { store } from './store';
 import { Provider } from 'react-redux';
+import { worker } from './mocks/browser';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </StrictMode>,
-)
+async function init() {
+  if (import.meta.env.DEV) {
+    await worker.start();
+  }
+
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </StrictMode>,
+  )
+}
+
+init();

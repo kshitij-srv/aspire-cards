@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export interface TransactionType {
     label: string;
@@ -10,31 +10,41 @@ export interface TransactionType {
 
 interface TransactionsState {
     transactions: TransactionType[];
+    loading: boolean;
+    error: string | null;
 }
 
 const initialState: TransactionsState = {
-    transactions: [
-        {
-            label: 'Hamleys',
-            date: '20 May 2020',
-            amount: '+ S$ 150',
-            type: 'credit',
-            subLabel: 'Refund on debit card',
-        },
-        {
-            label: 'Hamleys',
-            date: '20 May 2020',
-            amount: '- S$ 150',
-            type: 'debit',
-            subLabel: 'Charged to debit card',
-        },
-    ],
+    transactions: [],
+    loading: false,
+    error: null,
 };
+
+export const fetchTransactions = createAsyncThunk<TransactionType[]>('transactions/fetchTransactions', async () => {
+    const res = await fetch('/api/transactions');
+    if (!res.ok) throw new Error('Failed to fetch transactions');
+    return await res.json();
+});
 
 const transactionsSlice = createSlice({
     name: 'transactions',
     initialState,
     reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchTransactions.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(fetchTransactions.fulfilled, (state, action) => {
+                state.loading = false;
+                state.transactions = action.payload;
+            })
+            .addCase(fetchTransactions.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message || 'Failed to fetch transactions';
+            });
+    },
 });
 
 export default transactionsSlice.reducer;
