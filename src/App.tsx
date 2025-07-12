@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 function App() {
   return (
     <Router>
-      <div className="flex font-sans min-h-screen min-w-screen">
+      <div className="flex min-h-screen min-w-screen">
         <Sidebar />
         <InfoBox />
       </div>

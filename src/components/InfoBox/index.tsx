@@ -7,7 +7,7 @@ import Settings from "./Settings";
 
 const InfoBox = () => {
     return (
-        <div className="flex-1 p-10 bg-gray-100">
+        <div className="flex-1 p-10 bg-white">
             <Routes>
                 <Route path="/" element={<Navigate to="/home" />} />
                 <Route path="/home" element={<HomeInfo />} />

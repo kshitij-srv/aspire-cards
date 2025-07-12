@@ -1,10 +1,10 @@
 import { NavLink, useLocation } from "react-router-dom";
-import HomeIcon from "../Icons/HomeIcon";
-import CardIcon from "../Icons/CardIcon";
-import PaymentsIcon from "../Icons/PaymentsIcon";
-import CreditIcon from "../Icons/CreditIcon";
-import SettingsIcon from "../Icons/SettingsIcon";
-import AspireLogo from "../Icons/AspireLogo";
+import { ReactComponent as HomeIcon } from "../../assets/home.svg";
+import { ReactComponent as CardIcon } from "../../assets/card.svg";
+import { ReactComponent as PaymentsIcon } from "../../assets/payments.svg";
+import { ReactComponent as CreditIcon } from "../../assets/credit.svg";
+import { ReactComponent as SettingsIcon } from "../../assets/account.svg";
+import { ReactComponent as AspireLogo } from "../../assets/aspire.svg";
 
 const SidebarIcon = ({ children, selected }: { children: React.ReactNode, selected: boolean }) => (
     <span className={`inline-flex items-center justify-center w-6 h-6 mr-2 ${selected ? "text-[#01D167]" : "text-white"}`}>
@@ -39,10 +39,10 @@ const Sidebar = () => {
                             to={path}
                             key={label}
                             className={`flex items-center ${selected ? "text-[#01D167]" : "text-white"
-                                } transition-colors`}
+                                } transition-colors gap-2`}
                         >
                             <SidebarIcon selected={selected}>
-                                <Icon className="w-5 h-5 fill-current" />
+                                <Icon className="w-6 h-6 fill-current" />
                             </SidebarIcon>
                             {label}
                         </NavLink>
