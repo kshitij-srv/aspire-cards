@@ -51,9 +51,9 @@ const Card = ({ card }: CardProps) => {
                             </>
                         )}
                     </p>
-                    <div className="flex justify-start mt-2 gap-10">
+                    <div className={`flex justify-start mt-2 gap-10 min-h-[2.5rem]`}>
                         <span>Thru: {card.expiry}</span>
-                        <span>CVV: {card.cvv}</span>
+                        <span className="flex gap-2">CVV: {showFullNumber ? card.cvv : <span className="text-2xl">{'*'.repeat(card.cvv.length)}</span>}</span>
                     </div>
                 </div>
 

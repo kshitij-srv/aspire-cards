@@ -40,13 +40,13 @@ const CardsInfo = () => {
             {
                 activeTab === 'my-cards' && cards.length > 0
                     ? (
-                        <div className="bg-white rounded-xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.08)] p-10 flex gap-10 w-full h-dvh">
+                        <div className="bg-white rounded-xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.08)] p-10 flex gap-10 w-full">
                             <div className="flex flex-col gap-5 w-1/2">
                                 <CardCarousel currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
                                 <CardActions cardId={currentCard.id} />
                             </div>
                             <div className="flex-1 flex flex-col gap-5">
-                                <CardInfoPanel />
+                                <CardInfoPanel card={currentCard} />
                             </div>
                         </div>
                     ) : (

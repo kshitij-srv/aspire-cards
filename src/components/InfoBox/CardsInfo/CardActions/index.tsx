@@ -37,7 +37,7 @@ const CardActions = ({ cardId }: CardActionsProps) => {
     ];
 
     return (
-        <div className="flex justify-around bg-[#EDF3FF] rounded-lg py-4 mt-4">
+        <div className="flex justify-around bg-[#EDF3FF] rounded-xl py-4 mt-4 items-baseline">
             {actions.map(({ key, label, icon: Icon }) => {
                 const isFreezeAction = key === 'freeze';
                 return (

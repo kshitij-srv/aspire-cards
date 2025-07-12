@@ -13,8 +13,8 @@ export interface TransactionRowProps {
 }
 
 const iconList = [
-    <FlightIcon />,
     <FileStorageIcon />,
+    <FlightIcon />,
     <MegaphoneIcon />,
 ];
 
@@ -26,15 +26,14 @@ const TransactionRow = ({ index, label, date, amount, type, subLabel }: Transact
     const currentIcon = getIconByIndex(index);
 
     return (
-        <div className="flex items-start space-x-3 py-3 border-b border-gray-200 last:border-b-0 text-sm">
+        <div className="flex items-start space-x-3 py-3 border-b border-[#F5F5F5] last:border-b-0 text-sm">
             <div className="w-10 h-10 bg-[#009DFF1A] rounded-full flex items-center justify-center text-[#325BAF]">
                 {currentIcon}
             </div>
 
-            <div className="flex-1 text-sm">
+            <div className="flex-1 text-sm space-y-1">
                 <div className="font-medium text-[#222222]">{label}</div>
                 <div className="text-[#AAAAAA]">{date}</div>
-
                 <div className="flex space-x-2 text-xs font-medium text-[#325BAF] mt-2 items-center">
                     <div className="w-5 h-5 bg-[#325BAF] rounded-full flex items-center justify-center">
                         <BusinessAndFinanceIcon className="w-2.5 h-2" />

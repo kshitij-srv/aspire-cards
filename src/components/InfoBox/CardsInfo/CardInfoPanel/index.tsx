@@ -1,10 +1,15 @@
+import type { CardType } from '../../../../store/slices/cardsSlice';
 import CardDetailsAccordion from '../CardDetailsAccordion';
 import TransactionsAccordion from '../TransactionsAccordion';
 
-const CardInfoPanel = () => {
+interface CardInfoPanelProps {
+  card: CardType;
+}
+
+const CardInfoPanel = ({ card }: CardInfoPanelProps) => {
   return (
     <div>
-      <CardDetailsAccordion />
+      <CardDetailsAccordion card={card} />
       <TransactionsAccordion />
     </div>
   );

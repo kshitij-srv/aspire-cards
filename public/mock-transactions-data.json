@@ -14,5 +14,21 @@
     "amount": "- S$ 150",
     "type": "debit",
     "subLabel": "Charged to debit card"
+  },
+  {
+    "cardId": 1,
+    "label": "Hamleys",
+    "date": "20 May 2020",
+    "amount": "- S$ 150",
+    "type": "debit",
+    "subLabel": "Charged to debit card"
+  },
+  {
+    "cardId": 1,
+    "label": "Hamleys",
+    "date": "20 May 2020",
+    "amount": "+ S$ 150",
+    "type": "credit",
+    "subLabel": "Refund on debit card"
   }
 ]

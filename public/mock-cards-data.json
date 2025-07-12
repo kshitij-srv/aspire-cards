@@ -4,7 +4,7 @@
         "name": "Mark Henry",
         "number": "2736567849872020",
         "expiry": "12/25",
-        "cvv": "***",
+        "cvv": "123",
         "frozen": false,
         "balance": 1800
     },
@@ -13,7 +13,7 @@
         "name": "Jane Doe",
         "number": "3456756409873344",
         "expiry": "11/26",
-        "cvv": "***",
+        "cvv": "678",
         "frozen": false,
         "balance": 1200
     }
