@@ -7,9 +7,7 @@ import { Provider } from 'react-redux';
 import { worker } from './mocks/browser';
 
 async function init() {
-  if (import.meta.env.DEV) {
-    await worker.start();
-  }
+  await worker.start();
 
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
